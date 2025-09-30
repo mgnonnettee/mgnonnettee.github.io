@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Биография студентки - Кристина Прокопьева-Ротермиль</title>
+    <style>
+        /* Сброс и базовые стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6C63FF;
+            --secondary: #FF6584;
+            --accent: #4ECDC4;
+            --dark: #2A2D43;
+            --light: #F7F9FC;
+            --text: #333333;
+            --card-bg: #FFFFFF;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        /* Контейнер */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Шапка */
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 60px 0 40px;
+            margin-bottom: 60px;
+            border-radius: 0 0 40px 40px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .profile-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid rgba(255, 255, 255, 0.3);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .intro-text {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+        }
+
+        .intro-text h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .intro-text p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        /* Основная сетка */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        /* Карточки */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 35px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-wide {
+            grid-column: 1 / -1;
+        }
+
+        .card h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h2::before {
+            content: '';
+            width: 6px;
+            height: 30px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+
+        .card p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            color: var(--text);
+        }
+
+        /* Интересы */
+        .interests-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .interest-tag {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .interest-tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        /* Контакты */
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .contact-card {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .contact-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            background: white;
+        }
+
+        .contact-link {
+            text-decoration: none;
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Подвал */
+        .footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-radius: 40px 40px 0 0;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .intro-text h1 {
+                font-size: 2.2rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .card {
+                padding: 25px;
+            }
+            
+            .profile-image {
+                width: 180px;
+                height: 180px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .intro-text h1 {
+                font-size: 1.8rem;
+            }
+            
+            .card h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Анимации */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="profile-section fade-in">
+                    <img src="C:\Users\Кристина\Desktop\photo_5391356053511339723_w.jpg"
+                         class="profile-image">
+                </div>
+                <div class="intro-text fade-in delay-1">
+                    <h1>Привет! Я Кристина</h1>
+                    <p>Мне 18 лет, учусь в Томском Политехническом Университете, на направлении Цифровой дизайн и виртуальная реальность.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="container">
+        <div class="grid">
+            <!-- Обо мне -->
+            <section class="card card-wide fade-in delay-2">
+                <h2>Немного обо мне</h2>
+                <p>Родилась в городе Ишиме, Тюменской области, получила серебряную медаль и переехала в Томск на учёбу. С детства любила рисовать и родители отдали меня в художественную школу, которую я окончила в 2023 году.</p>
+                <p>Я творческая личность, для меня очень важно вдохновение, как и воздух. Меня привлекает всё необычное: цвета, звуки, формы и истории, которые я могу передать через искусство.</p>
+                <p>Я легко нахожу вдохновение в повседневных мелочах и умею превращать обыденность в нечто выразительное. Мне нравится экспериментировать с различными техниками и материалами, пробуя новое и не боясь ошибок.</p>
+            </section>
+
+            <!-- Интересы -->
+            <section class="card fade-in delay-3">
+                <h2>Мои интересы</h2>
+                <div class="interests-grid">
+                    <span class="interest-tag">Рисование</span>
+                    <span class="interest-tag">Дизайн</span>
+                    <span class="interest-tag">Цифровое искусство</span>
+                    <span class="interest-tag">Виртуальная реальность</span>
+                    <span class="interest-tag">3D-моделирование</span>
+                    <span class="interest-tag">Иллюстрация</span>
+                    <span class="interest-tag">Типографика</span>
+                    <span class="interest-tag">UX/UI дизайн</span>
+                </div>
+            </section>
+
+            <!-- Контакты -->
+            <section class="card fade-in delay-4">
+                <h2>Мои контакты</h2>
+                <div class="contacts-grid">
+                    <div class="contact-card">
+                        <a href="https://t.me/roter_armel" class="contact-link" target="_blank">
+                            <div class="contact-icon">TG</div>
+                            <span>Телеграм</span>
+                        </a>
+                    </div>
+                    <div class="contact-card">
+                        <a href="https://www.tiktok.com/@suddennes?_t=ZS-8zwhFT3rDZh&_r=1" class="contact-link" target="_blank">
+                            <div class="contact-icon">TT</div>
+                            <span>TikTok</span>
+                        </a>
+                    </div>
+                    <div class="contact-card">
+                        <a href="https://vk.com/mgnonettee" class="contact-link" target="_blank">
+                            <div class="contact-icon">VK</div>
+                            <span>ВКонтакте</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Прокопьева-Ротермиль Кристина Алексеевна | Студентка ТПУ ИШИТР</p>
+        </div>
+    </footer>
+</body>
+</html>
